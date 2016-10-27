@@ -1,0 +1,6 @@
+framework module PSMAdKitSDK {
+  umbrella header "PSMAdKitSDK.h"
+
+  export *
+  module * { export * }
+}

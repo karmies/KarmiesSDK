@@ -1,0 +1,10 @@
+framework module KarmiesSDK {
+  umbrella header "KarmiesSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module KarmiesSDK.Swift {
+    header "KarmiesSDK-Swift.h"
+}
