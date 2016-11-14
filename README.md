@@ -1,17 +1,10 @@
 # KarmiesSDK
 
-KarmiesSDK is a client implementation of the Karmies API to add custom interactive emoji to an application. At a high level, the necessary steps to integrate Karmies into your existing app are:
+KarmiesSDK is a client implementation of the Karmies API to add custom interactive emoji to an application.
 
-1. Sign publisher contract with Karmies
-2. Work with account manager to set up Karmies account and obtain a client ID
-3. Download and install the Karmies SDK artifacts into the app project
-4. Configure the Karmies SDK in app startup routines
-5. Insert emoji selector trigger button into application
-6. Extend editable text components with Karmies functionality
-7. Extend read-only text components with Karmies functionality
-8. Implement any necessary Karmies analytics events
-9. Remove existing emoji functionality (optional)
-10. Test
+Integration instructions are below. If you are a new Karmies publisher you will also need to complete
+the [Karmies Publisher On-boarding Process](https://github.com/karmies/KarmiesSDK/wiki/Publisher-On-boarding-Process)
+before you can begin operating your Karmies-integrated app.
 
 ----
 
