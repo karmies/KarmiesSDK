@@ -152,12 +152,12 @@ Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) w
     }
     ```
 
-    Next, add the Karmies plugin (v2.1.0) to your project's dependencies section:
+    Next, add the Karmies plugin (v2.1.1) to your project's dependencies section:
 
     ```
     dependencies {
         ...
-        compile 'com.karmies:plugin:2.1.0'
+        compile 'com.karmies:plugin:2.1.1'
     }
     ```
 
