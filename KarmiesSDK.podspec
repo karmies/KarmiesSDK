@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
   spec.name             = 'KarmiesSDK'
   spec.module_name      = 'KarmiesSDK'
-  spec.version          = '2.4.3'
-  spec.license          = { :text => 'Copyright 2016 Karmies, Inc.', :type => 'Commercial' }
+  spec.version          = '2.5.0'
+  spec.license          = { :text => 'Copyright 2017 Karmies, Inc.', :type => 'Commercial' }
   spec.homepage         = 'https://karmies.com'
   spec.authors          = { 'Karmies' => 'support@karmies.com' }
   spec.summary          = 'Karmies SDK in Swift for iOS and macOS'
