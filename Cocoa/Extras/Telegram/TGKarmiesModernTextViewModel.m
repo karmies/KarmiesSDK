@@ -29,11 +29,11 @@
 }
     
 - (void)drawInContext:(CGContextRef)context {
-    [[KarmiesContext sharedContext] drawSerializedMessage:self.text outgoing:karmiesOutgoing insideFrame:self.bounds withFont:self.fontAsUI];
+    [[Karmies shared] drawSerializedMessage:self.text outgoing:karmiesOutgoing insideFrame:self.bounds withFont:self.fontAsUI];
 }
     
 - (void)layoutForContainerSize:(CGSize)containerSize {
-    CGSize size = [[KarmiesContext sharedContext] measureSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI] maxWidth:(float)containerSize.width - DATE_TEXT_WIDTH];
+    CGSize size = [[Karmies shared] measureSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI] maxWidth:(float)containerSize.width - DATE_TEXT_WIDTH];
     size.width = size.width + DATE_TEXT_WIDTH;
     CGRect frame = self.frame;
     frame.size = size;
@@ -41,7 +41,7 @@
 }
     
 - (NSString *)linkAtPoint:(CGPoint)point regionData:(__autoreleasing NSArray **)regionData {
-    NSString *link = [[KarmiesContext sharedInstance] linkAtPoint:point insideFrame:self.frame withSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI]];
+    NSString *link = [[Karmies shared] linkAtPoint:point insideFrame:self.frame withSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI]];
     if (link != nil) {
         if (regionData != NULL) {
             *regionData = @[[NSValue valueWithCGRect:CGRectZero]];
