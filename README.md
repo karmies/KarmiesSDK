@@ -27,7 +27,7 @@ Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) w
   Otherwise, manually add the KarmiesSDK framework and all required external and system framework dependencies to your project. You can still obtain a list of required frameworks and versions from the [Podspec](https://cocoapods.org/pods/KarmiesSDK).
 
   To use KarmiesSDK with built-in PSMAdKit support use an alternative version with PSMAdKitSDK linked.
-     ```
+    ```
     pod 'KarmiesSDK-PSMAdKit'
     pod 'Alamofire',      git: 'https://github.com/karmies/Alamofire',      branch: 'ios8'
     pod 'AlamofireImage', git: 'https://github.com/karmies/AlamofireImage', branch: 'ios8'
@@ -135,6 +135,42 @@ Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) w
   - `sendAutosuggestEmojisInsertEvent` - whenever a suggested Karmies emoji is inserted into a new message
   - `sendAutosuggestEmojisClickEvent` - whenever a suggested Karmies emoji is clicked in a sent or received message
   - `sendAutosuggestEmojisImpressionEvent` - whenever a Karmies emoji is displayed in a suggest bar
+
+----
+
+## iOS Messages Extension ##
+
+Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) which also includes a Messages Extension example.
+
+1. Make sure Swift support is enabled in your project.
+
+  See the Apple Developer guide for more info if your project does not already use Swift.
+
+2. Add `KarmiesSDK.framework` to your project.
+
+  Karmies is easiest to add using CocoaPods. Because Karmies uses analytics inside an extension we also provide forked dependencies that add app extension support.
+  ```
+  pod 'KarmiesSDK'
+  pod 'AWSMobileAnalytics', git: 'https://github.com/karmies/aws-sdk-ios', branch: 'app-extension'
+  ```
+  Otherwise, manually add the KarmiesSDK framework and all required external and system framework dependencies to your project. You can still obtain a list of required frameworks and versions from the [Podspec](https://cocoapods.org/pods/KarmiesSDK).
+
+3. Create a new iOS iMessage Extension target according to the Apple Developer guide and ensure that it is correctly embedded in the main app and runs without Karmies.
+
+4. Change the main `MessagesViewController` to extend `KarmiesMessagesAppViewController` and override vars to provide configuration. Replace "default" with the `clientID` obtained from Karmies. If `monitorLocation` is set Karmies will automatically request user location for features that require it.
+
+  ```
+  class MessagesViewController: KarmiesMessagesAppViewController {
+
+    override var clientID: String {
+      return "default"
+    }
+
+    override var monitorLocation: Bool {
+      return true
+    }
+  }
+  ```
 
 ----
 
