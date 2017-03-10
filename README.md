@@ -6,6 +6,8 @@ Integration instructions are below. If you are a new Karmies publisher you will 
 the [Karmies Publisher On-boarding Process](https://github.com/karmies/KarmiesSDK/wiki/Publisher-On-boarding-Process)
 before you can begin operating your Karmies-integrated app.
 
+Looking for more information about the Karmies APIs? See the [Karmies API Documentation](https://github.com/karmies/KarmiesSDK/wiki/Karmies-APIs) for more information.
+
 ----
 
 ## iOS Integration ##
@@ -186,8 +188,6 @@ Check out the [Android Example App](https://github.com/karmies/KarmiesExample-An
         compile 'com.karmies:karmiessdk'
     }
     ```
-
-    Note that unlike iOS using KarmiesSDK with built-in PSMAdKit support does not require a different dependency for Android.
 
 2. Create Karmies in the main app activity shortly after app launch. Replace "default" with the `clientID` obtained from Karmies. If the main app activity can extend `KarmiesActivity` then only `Karmies.create()` is needed and other lifecycle events will be handled automatically. If not using `KarmiesActivity` then also call `start()`, `resume()`, `pause()`, `stop()` as appropriate from the activity.
 
