@@ -18,31 +18,21 @@ Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) w
 
 2. Add `KarmiesSDK.framework` to your project.
 
-  Karmies is easiest to add using CocoaPods. Because Karmies maintains a minimum iOS 8 target with Swift 3 while some libraries have increased to iOS 9 we also provide forked dependencies that maintain iOS 8 support.
+  Karmies is easiest to add using CocoaPods.
     ```
     pod 'KarmiesSDK'
-    pod 'Alamofire',      git: 'https://github.com/karmies/Alamofire',      branch: 'ios8'
-    pod 'AlamofireImage', git: 'https://github.com/karmies/AlamofireImage', branch: 'ios8'
     ```
-  Otherwise, manually add the KarmiesSDK framework and all required external and system framework dependencies to your project. You can still obtain a list of required frameworks and versions from the [Podspec](https://cocoapods.org/pods/KarmiesSDK).
-
-  To use KarmiesSDK with built-in PSMAdKit support use an alternative version with PSMAdKitSDK linked.
-    ```
-    pod 'KarmiesSDK-PSMAdKit'
-    pod 'Alamofire',      git: 'https://github.com/karmies/Alamofire',      branch: 'ios8'
-    pod 'AlamofireImage', git: 'https://github.com/karmies/AlamofireImage', branch: 'ios8'
-    ```
-  For manual integration this version has additional dependencies which may also be found in its [Podspec](https://cocoapods.org/pods/KarmiesSDK-PSMAdKit).
+  Otherwise, manually add the KarmiesSDK framework to your project. You can still obtain the latest download link from the  [Podspec](https://cocoapods.org/pods/KarmiesSDK).
 
 3. Configure Karmies using the Karmies class shortly after app launch, usually in `AppDelegate.application:didFinishLaunchingWithOptions`. Replace "default" with the `clientID` obtained from Karmies. If `monitorLocation` is set Karmies will automatically request user location for features that require it. If `loadOnReachable` is set Karmies will automatically load new data when the network is available.
   ```
-  Karmies.shared.configure(clientID: "default", monitorLocation: true)
+  Karmies.shared.configure(application: application, clientID: "default", monitorLocation: true)
   ```
 
 4. Add additional calls to update Karmies data when desired, such as when the application returns to foreground.
-  ```
-  Karmies.shared.update(reload: false)
-  ```
+    ```
+    Karmies.shared.update(reload: false)
+    ```
 5. Create a `KarmiesController` for managing the keyboard input view, optional toggle button, hiding the system keyboard, and the auto suggest bar. Replace `inputTextView` with the input field used by users to enter messages where emoji should be accessible.
 
   To use the provided Karmies keyboard:
@@ -148,12 +138,11 @@ Check out the [iOS Example App](https://github.com/karmies/KarmiesExample-iOS) w
 
 2. Add `KarmiesSDK.framework` to your project.
 
-  Karmies is easiest to add using CocoaPods. Because Karmies uses analytics inside an extension we also provide forked dependencies that add app extension support.
-  ```
-  pod 'KarmiesSDK'
-  pod 'AWSMobileAnalytics', git: 'https://github.com/karmies/aws-sdk-ios', branch: 'app-extension'
-  ```
-  Otherwise, manually add the KarmiesSDK framework and all required external and system framework dependencies to your project. You can still obtain a list of required frameworks and versions from the [Podspec](https://cocoapods.org/pods/KarmiesSDK).
+  Karmies is easiest to add using CocoaPods.
+    ```
+    pod 'KarmiesSDK'
+    ```
+  Otherwise, manually add the KarmiesSDK framework to your project. You can still obtain the latest download link from the [Podspec](https://cocoapods.org/pods/KarmiesSDK).
 
 3. Create a new iOS iMessage Extension target according to the Apple Developer guide and ensure that it is correctly embedded in the main app and runs without Karmies.
 

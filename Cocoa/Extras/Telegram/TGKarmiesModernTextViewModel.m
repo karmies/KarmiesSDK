@@ -7,7 +7,10 @@
 //
 
 #import "TGKarmiesModernTextViewModel.h"
-#import "KarmiesSDK-Swift.h"
+#import <CoreLocation/CoreLocation.h>
+#import <WebKit/WebKit.h>
+#import <Messages/Messages.h>
+#import "Karmiegram-Swift.h"
 
 #define DATE_TEXT_WIDTH 75
 
@@ -28,20 +31,24 @@
     return self;
 }
     
-- (void)drawInContext:(CGContextRef)context {
-    [[Karmies shared] drawSerializedMessage:self.text outgoing:karmiesOutgoing insideFrame:self.bounds withFont:self.fontAsUI];
+- (void)drawInContext:(CGContextRef)__unused context {
+    [Karmies.shared.messages drawSerializedMessage:self.text outgoing:karmiesOutgoing insideFrame:self.bounds withFont:self.fontAsUI];
 }
     
 - (void)layoutForContainerSize:(CGSize)containerSize {
-    CGSize size = [[Karmies shared] measureSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI] maxWidth:(float)containerSize.width - DATE_TEXT_WIDTH];
+    CGSize size = [Karmies.shared.messages measureSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI] maxWidth:(float)containerSize.width - DATE_TEXT_WIDTH];
     size.width = size.width + DATE_TEXT_WIDTH;
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
 }
+
+- (NSString *)linkAtPoint:(CGPoint)point regionData:(__autoreleasing NSArray **)regionData hiddenLink:(__unused bool *)hiddenLink linkText:(__autoreleasing __unused NSString **)linkText {
+    return [self linkAtPoint:point regionData:regionData];
+}
     
 - (NSString *)linkAtPoint:(CGPoint)point regionData:(__autoreleasing NSArray **)regionData {
-    NSString *link = [[Karmies shared] linkAtPoint:point insideFrame:self.frame withSerializedMessage:self.text outgoing:karmiesOutgoing font:[self fontAsUI]];
+    NSString *link = [Karmies.shared.messages linkAt:point inside:self.frame with:self.text outgoing:karmiesOutgoing font:[self fontAsUI]];
     if (link != nil) {
         if (regionData != NULL) {
             *regionData = @[[NSValue valueWithCGRect:CGRectZero]];
