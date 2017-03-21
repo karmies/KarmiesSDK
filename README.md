@@ -239,16 +239,19 @@ Check out the [Android Example App](https://github.com/karmies/KarmiesExample-An
             public void onUpdate() {
 
                 // Get categories
-                List<KarmiesCategory> categories = Karmies.getData().getCategories();
+                List<KarmiesCategory> categories = Karmies.getData().getCategoriesAtLocation(null, false);
 
-                // To render an emoji or category icon create a `KarmiesEmojiImageView`
-                // instance and supply the emoji name:
+                // Get individual emoji names for category
+                List<String> names = category.getEmojisAtLocation(null);
+
+                // To render an emoji or category icon create a `KarmiesEmojiImageView`:
                 KarmiesEmojiImageView emojiView = new KarmiesEmojiImageView(context);
+
+                // ... and set the emoji name:
                 emojiView.setEmoji(name);
 
                 // ... or set the category image URL:
                 emojiView.setImageEmojiUrlPath(category.getImage());
-
             }
         });
     }
